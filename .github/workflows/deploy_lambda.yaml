@@ -1,6 +1,6 @@
 
 
-name: Deploy Lambda Echo
+name: Deploy Lambda 
 
 on:
   push:

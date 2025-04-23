@@ -49,3 +49,16 @@ jobs:
           docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG -f $DOCKERFILE_PATH .
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
           echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
+
+      - name: Deploy to App Runner
+        id: deploy-apprunner
+        uses: awslabs/amazon-app-runner-deploy@main
+        with:
+          service: miax13_api
+          image: $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+          access-role-arn: arn:aws:iam::318489830759:role/service-role/AppRunnerECRAccessRole
+          region: ${{ env.AWS_REGION }}
+          cpu : 1
+          memory : 2
+          port: 8080
+          wait-for-service-stability: true
