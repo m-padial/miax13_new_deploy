@@ -11,7 +11,7 @@ env:
   AWS_REGION: eu-west-1
   ECR_REPOSITORY: miax_13_new_lambda
   LAMBDA_NAME: miax_13_new_lambda
-  DOCKERFILE_PATH: dockerfile
+  DOCKERFILE_PATH: dockerfiles\miax_13_new_lambda\dockerfile
 
 defaults:
   run:
