@@ -1,4 +1,4 @@
-import src.miax_13_new_lambda.app as app
+import app
 
 
 def test_handler():
